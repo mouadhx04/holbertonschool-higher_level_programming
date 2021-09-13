@@ -38,7 +38,7 @@ All your files will be interpreted/compiled on Ubuntu 14.04 LTS using python3 (v
 
 All your files should end with a new line
 
-The first line of all your files should be exactly #!/usr/bin/python3
+The first line of all your files should be be exactly #!/usr/bin/python3
 
 A README.md file, at the root of the folder of the project, is mandatory
 
