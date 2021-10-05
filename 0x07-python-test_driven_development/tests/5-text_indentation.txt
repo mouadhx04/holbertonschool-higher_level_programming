@@ -1,0 +1,107 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# long string
+>>> text_indentation('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres.')
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<BLANKLINE>
+Quonam modo?
+<BLANKLINE>
+Utrum igitur tibi litteram videor an totas paginas commovere?
+<BLANKLINE>
+Non autem hoc:
+<BLANKLINE>
+igitur ne illud quidem.
+<BLANKLINE>
+Fortasse id optimum, sed ubi illud:
+<BLANKLINE>
+Plus semper voluptatis?
+<BLANKLINE>
+Teneo, inquit, finem illi videri nihil dolere.
+<BLANKLINE>
+Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+<BLANKLINE>
+Si id dicis, vicimus.
+<BLANKLINE>
+Inde sermone vario sex illa a Dipylo stadia confecimus.
+<BLANKLINE>
+Sin aliud quid voles, postea.
+<BLANKLINE>
+Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+<BLANKLINE>
+Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres.
+<BLANKLINE>
+
+# multiple spaces at end and beginning of newlined
+>>> text_indentation('   hi.      how   ?  you:    Lisa')
+hi.
+<BLANKLINE>
+how   ?
+<BLANKLINE>
+you:
+<BLANKLINE>
+Lisa
+
+# all ......
+>>> text_indentation('.......')
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+
+# no subs, but newlines
+>>> text_indentation('   hi  \n  how  \n  are  \n  you:  Bobby?')
+hi
+how
+are
+you:
+<BLANKLINE>
+Bobby?
+<BLANKLINE>
+
+# non string
+>>> text_indentation(45)
+Traceback (most recent call last):
+		  ...
+TypeError: text must be a string
+
+# no punctuation marks
+>>> text_indentation("there is no punctuation here")
+there is no punctuation here
+
+# input None
+>>> text_indentation(None)
+Traceback (most recent call last):
+		  ...
+TypeError: text must be a string
+
+# no args
+>>> text_indentation()
+Traceback (most recent call last):
+		  ...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+# too many args
+>>> text_indentation("this", "that")
+Traceback (most recent call last):
+		  ...
+TypeError: text_indentation() takes 1 positional argument but 2 were given
+
+# another long string
+>>> text_indentation("""Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, "and what is the use of a book," thought Alice "without pictures or conversation?" \n So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.""")
+Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do:
+<BLANKLINE>
+once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, "and what is the use of a book," thought Alice "without pictures or conversation?
+<BLANKLINE>
+"
+So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.
+<BLANKLINE>
