@@ -60,4 +60,4 @@ All your tests should be executed by using this command: python3 -m unittest dis
 
 You can also test file by file by using this command: python3 -m unittest tests/test_models/test_base.py
 
-We strongly encourage you to work together on test cases so that you don’t miss any edge case
+WWe strongly encourage you to work together on test cases so that you don’t miss any edge case
