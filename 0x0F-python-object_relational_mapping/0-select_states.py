@@ -16,8 +16,7 @@ def print_states():
                          port=3306,
                          user=username,
                          passwd=password,
-                         db=database
-                         )
+                         db=database)
     cur = db.cursor()
     cur.execute('SELECT * FROM states ORDER BY id ASC')
     rows = cur.fetchall()
