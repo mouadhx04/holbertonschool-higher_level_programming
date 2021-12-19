@@ -1,27 +1,21 @@
 #!/usr/bin/python3
-"""
-list all State objects from the database
-"""
+""" add a new state"""
+if __name__ == '__main__':
+    from sys import argv
+    from model_state import Base, State
+    from sqlalchemy.orm import sessionmaker
+    from sqlalchemy import create_engine
 
-from sys import argv
-from model_state import Base, State
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
+    engine = create_engine(
+        'mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1], argv[2], argv[3]),
+        pool_pre_ping=True)
+    Session = sessionmaker(bind=engine)
 
-
-if __name__ == "__main__":
-
-    user = argv[1]
-    password = argv[2]
-    database = argv[3]
-
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format
-                           (user, password, database), pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
-    session = Session(engine)
-    new_state = State(name="Louisiana")
-    session.add(new_state)
+    session = Session()
+    new = State(name="Louisiana")
+    session.add(new)
     session.commit()
-    print(new_state.id)
+    print(new.id)
     session.close()
