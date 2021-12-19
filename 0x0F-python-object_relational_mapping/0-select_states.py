@@ -1,14 +1,12 @@
 #!/usr/bin/python3
 
 """
-Select all states
+Select all states from the database hbtn_0e_0_usa
 """
-
 import MySQLdb
 import sys
 
 def print_states():
-    """print all from states in database"""
 
     username = sys.argv[1]
     password = sys.argv[2]
