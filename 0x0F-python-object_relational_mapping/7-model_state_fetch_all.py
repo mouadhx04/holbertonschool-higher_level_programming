@@ -1,27 +1,22 @@
 #!/usr/bin/python3
-""" list all State objects from the database hbtn_0e_6_usa"""
-from sys import argv
-from model_state import Base, State
-from sqlalchemy.orm import sessionmaker
+"""
+list all State objects from the
+database hbtn_0e_6_usa
+"""
 from sqlalchemy import create_engine
-
+from sqlalchemy.orm import sessionmaker
+import model_state
+from model_state import Base
+import sys
 if __name__ == '__main__':
-
-    """ Initialize the database :: Connection & Metadata retrieval"""
-    
     engine = create_engine(
-        'mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1], argv[2], argv[3]),
-        pool_pre_ping=True)
-
-    """ SqlAlchemy :: factory of sessions bound to the engine object created earlier"""
-    
-    Session = sessionmaker(bind=engine)
-
-""" Create all tables that do not already exist"""
+        'mysql+mysqldb://{}:{}@localhost/{}'.
+        format(sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
     Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    mySession = Session()
+    for st_obj in mySession.query(model_state.State).\
+            order_by(model_state.State.id).all():
+        print("{}: {}".format(st_obj.id, st_obj.name))
 
-""" SqlAlchemy :: Starts a session (session object)"""
-    session = Session()
-    for state in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
-    session.close()
+    mySession.close()
